@@ -12,11 +12,11 @@ public class App {
 
             switch(inputMenu){
                 case "1":
-                    System.out.println(1);
-                    makeNumber.makeNumber(3);
+                    makeNumber.makeNumber(5);
                     makeNumber.getCorrectNumbers();
                     makeNumber.setCorrectNumber();
                     makeNumber.getCorrectNumber();
+                    makeNumber.clearCorrectNumbers();
                     break;
                 case "2":
                     System.out.println(2);

@@ -10,16 +10,17 @@ public class MakeNumber {
     Random random = new Random();
     Iterator iter = correctNumbers.iterator();
 
-    public void makeNumber(int n){
-        correctNumbers.clear();
-        for (int i = 0; i < n; i++) {
-            int inputNumber = random.nextInt(9);
-            if(!correctNumbers.contains(inputNumber)){
+    public void makeNumber(int n) {
+        while (correctNumbers.size() < n) {
+            int inputNumber = random.nextInt(9) + 1;
+            if (!correctNumbers.contains(inputNumber)) {
                 correctNumbers.add(inputNumber);
+                System.out.println("add number: " + inputNumber);
+            } else {
+                System.out.println("중복");
             }
         }
     }
-
     public void setCorrectNumber(){
         String combineNumber = "";
         for(Integer i : this.correctNumbers){
@@ -36,6 +37,10 @@ public class MakeNumber {
     public HashSet getCorrectNumbers(){
         System.out.println("정답 HashSet: "+correctNumbers);
         return correctNumbers;
+    }
+
+    public void clearCorrectNumbers(){
+        this.correctNumbers.clear();
     }
 
 
