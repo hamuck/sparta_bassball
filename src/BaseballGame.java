@@ -45,7 +45,7 @@ public class BaseballGame {
 
     public void getCounts(){
         for (int i = 0; i < this.counts.size(); i++){
-            System.out.println((i+1)+"번째 시도 횟수 : "+this.counts.get(i));
+            System.out.println((i+1)+"번째 게임 : 시도 횟수 - "+this.counts.get(i));
         }
     }
 
@@ -119,7 +119,7 @@ public class BaseballGame {
                     break;
                 }
 
-                if (compareNumber() == 3) {
+                if (compareNumber() == digit) {
                     System.out.println("정답입니다! : "+mkNumber.getCorrectNumbersList());
                     mkNumber.clearCorrectNumbersHashSet();
                     mkNumber.clearCorrectNumberList();

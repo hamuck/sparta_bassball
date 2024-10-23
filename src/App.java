@@ -6,14 +6,21 @@ public class App {
         Scanner sc = new Scanner(System.in);
         String inputMenu = "";
         BaseballGame baseballGame = new BaseballGame();
+        int difficulty = 3;
         while(!inputMenu.equals("3")){
             System.out.println("게임을 시작하시려면 원하시는 메뉴를 입력 해 주세요.");
-            System.out.println("1. 게임 시작하기 | 2. 게임 기록 보기 | 3. 종료하기");
+            System.out.println("0. 난이도 설정하기 | 1. 게임 시작하기 | 2. 게임 기록 보기 | 3. 종료하기");
             inputMenu = sc.nextLine();
 
             switch(inputMenu){
+                case "0":
+                    System.out.println("설정하고자 하는 자리수를 입력하세요.");
+                    System.out.println("현재 자리수 : "+difficulty);
+                    difficulty = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println(difficulty+"자리수 난이도로 설정되었습니다.");
                 case "1":
-                    baseballGame.startGame(3);
+                    baseballGame.startGame(difficulty);
                     inputMenu = "";
                     break;
                 case "2":
