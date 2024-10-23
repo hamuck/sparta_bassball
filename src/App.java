@@ -15,7 +15,10 @@ public class App {
                     baseballGame.startGame(3);
                     break;
                 case "2":
-                    System.out.println(2);
+                    baseballGame.getCounts();
+                    break;
+                case "3":
+                    System.out.println("게임을 종료합니다");
                     break;
             }
         }

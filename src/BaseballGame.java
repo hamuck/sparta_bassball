@@ -8,13 +8,30 @@ public class BaseballGame {
     MakeNumber mkNumber = new MakeNumber();
     private HashSet<Integer> inputNumbersHashSet = new HashSet<>();
     private ArrayList<Integer> inputNumbersList = new ArrayList<>();
+    private ArrayList<Integer> counts = new ArrayList<>();
 
-    public void setInputNumbers(int inputNumber) {
-        try {
-            inputNumbersHashSet.add(inputNumber);
-            inputNumbersList.add(inputNumber);
-        } catch (InputMismatchException e) {
-            System.out.println("1 ~ 9 범위의 정수만 입력이 가능합니다!");
+    public void setInputNumbers(int input) {
+        String s = String.valueOf(input);
+        int[] inputNumbers = new int[s.length()];
+
+        for (int i = 0; i < s.length(); i++) {
+            inputNumbers[i] = Integer.parseInt(s.charAt(i)+"");
+            try {
+                inputNumbersHashSet.add(inputNumbers[i]);
+                inputNumbersList.add(inputNumbers[i]);
+            } catch (InputMismatchException e) {
+                System.out.println("1 ~ 9 범위의 정수만 입력이 가능합니다!");
+            }
+        }
+    }
+
+    public void setCounts(int cnt) {
+        this.counts.add(cnt);
+    }
+
+    public void getCounts(){
+        for (int i = 0; i < this.counts.size(); i++){
+            System.out.println((i+1)+"번째 시도 횟수 : "+this.counts.get(i));
         }
     }
 
@@ -27,7 +44,7 @@ public class BaseballGame {
         return this.inputNumbersList;
     }
 
-    public HashSet<Integer> getInputNumbersListHashSet() {
+    public HashSet<Integer> getInputNumbersHashSet() {
         return this.inputNumbersHashSet;
     }
 
@@ -48,15 +65,12 @@ public class BaseballGame {
         for (int i = 0; i < inputNumbersList.size(); i++) {
             if (mkNumber.getCorrectNumbersList(i) == getInputNumbersList(i)) {
                 strike++;
-                System.out.println(mkNumber.getCorrectNumbersList(i)+"는 입력 "+getInputNumbersList(i)+"스트라이크");
 
             } else if (correctNumber.contains(i)) {
                 ball++;
-                System.out.println(mkNumber.getCorrectNumbersList(i)+"는 입력 "+getInputNumbersList(i)+"볼");
 
             } else {
                 out++;
-                System.out.println(mkNumber.getCorrectNumbersList(i)+"는 입력 "+getInputNumbersList(i)+"아웃");
             }
         }
         System.out.println("strike: " + strike + " ball: " + ball + " out: " + out);
@@ -70,28 +84,25 @@ public class BaseballGame {
         public void startGame(int digit) {
             mkNumber.makeNumber(digit);
             mkNumber.setCorrectNumberList();
-
-            System.out.println("해쉬셋"+getInputNumbersListHashSet());
+            int tries = 0;
             System.out.println("정답리스트"+mkNumber.getCorrectNumbersList());
 
             while (true) {
-                System.out.println("첫번째 숫자를 입력해 주세요");
-                int input1 = sc.nextInt();
-                setInputNumbers(input1);
-                System.out.println("두번째 숫자를 입력해 주세요");
-                int input2 = sc.nextInt();
-                setInputNumbers(input2);
-                System.out.println("세번째 숫자를 입력해 주세요");
-                int input3 = sc.nextInt();
-                setInputNumbers(input3);
+                try{
+                    System.out.println("숫자를 입력해 주세요");
+                    int input1 = sc.nextInt();
+                    tries++;
+                    setInputNumbers(input1);
 
-                System.out.println("해쉬셋"+getInputNumbersListHashSet());
+                }catch (InputMismatchException e) {
+                    System.out.println("잘못된 입력입니다");
+                    break;
+                }
 
-                int strike = compareNumber();
-
-                if (strike == 3) {
+                if (compareNumber() == 3) {
                     mkNumber.clearCorrectNumbersHashSet();
                     mkNumber.clearCorrectNumberList();
+                    setCounts(tries);
                     break;
                 }
             }
