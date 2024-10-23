@@ -24,7 +24,7 @@ public class App {
                     System.out.println("게임을 종료합니다.");
                     break;
                 default:
-                    System.out.println("app - 잘못된 입력입니다");
+                    System.out.println("잘못된 입력입니다");
             }
         }
     }

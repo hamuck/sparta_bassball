@@ -14,6 +14,16 @@ public class BaseballGame {
 
     //자릿수검사추가하ㅈ기
 
+    public boolean checkInputNumber(){
+        boolean check;
+        if (inputNumbersHashSet.size() == mkNumber.getCorrectNumbersHashSet().size()){
+            check = true;
+        }else {
+            check = false;
+        }
+        return check;
+    }
+
     public void setInputNumbers(int input) {
         String s = String.valueOf(input);
         int[] inputNumbers = new int[s.length()];
@@ -98,9 +108,11 @@ public class BaseballGame {
                     sc.nextLine();
                     tries++;
                     setInputNumbers(input1);
-
+                    if (!checkInputNumber()){
+                        System.out.println(digit+" 자릿수의 숫자를 입력해 주세요");
+                    }
                 }catch (InputMismatchException e) {
-                    System.out.println("startgame-잘못된 입력입니다");
+                    System.out.println("잘못된 입력입니다");
                     sc.nextLine();
                     mkNumber.clearCorrectNumbersHashSet();
                     mkNumber.clearCorrectNumberList();
