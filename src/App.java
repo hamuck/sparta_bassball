@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class App {
@@ -13,18 +14,18 @@ public class App {
             switch(inputMenu){
                 case "1":
                     baseballGame.startGame(3);
+                    inputMenu = "";
                     break;
                 case "2":
                     baseballGame.getCounts();
+                    inputMenu = "";
                     break;
                 case "3":
-                    System.out.println("게임을 종료합니다");
+                    System.out.println("게임을 종료합니다.");
                     break;
+                default:
+                    System.out.println("app - 잘못된 입력입니다");
             }
         }
-
-
-
-
     }
 }

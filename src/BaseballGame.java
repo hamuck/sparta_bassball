@@ -6,9 +6,13 @@ import java.util.Scanner;
 public class BaseballGame {
     Scanner sc = new Scanner(System.in);
     MakeNumber mkNumber = new MakeNumber();
+
+    //입력받을 해쉬셋, 리스트, 실행횟수 기록용 리스트
     private HashSet<Integer> inputNumbersHashSet = new HashSet<>();
     private ArrayList<Integer> inputNumbersList = new ArrayList<>();
     private ArrayList<Integer> counts = new ArrayList<>();
+
+    //자릿수검사추가하ㅈ기
 
     public void setInputNumbers(int input) {
         String s = String.valueOf(input);
@@ -91,15 +95,20 @@ public class BaseballGame {
                 try{
                     System.out.println("숫자를 입력해 주세요");
                     int input1 = sc.nextInt();
+                    sc.nextLine();
                     tries++;
                     setInputNumbers(input1);
 
                 }catch (InputMismatchException e) {
-                    System.out.println("잘못된 입력입니다");
+                    System.out.println("startgame-잘못된 입력입니다");
+                    sc.nextLine();
+                    mkNumber.clearCorrectNumbersHashSet();
+                    mkNumber.clearCorrectNumberList();
                     break;
                 }
 
                 if (compareNumber() == 3) {
+                    System.out.println("정답입니다! : "+mkNumber.getCorrectNumbersList());
                     mkNumber.clearCorrectNumbersHashSet();
                     mkNumber.clearCorrectNumberList();
                     setCounts(tries);
