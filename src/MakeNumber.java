@@ -1,47 +1,54 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Random;
+import java.util.*;
 
 public class MakeNumber {
-    private HashSet<Integer> correctNumbers = new HashSet<>();
-    private int correctNumber = 0;
+    private HashSet<Integer> correctNumbersHashSet = new HashSet<>();
+    private List<Integer> correctNumbersList = new ArrayList<>();
     Random random = new Random();
-    Iterator iter = correctNumbers.iterator();
+    private int digit = 0;
 
     public void makeNumber(int n) {
-        while (correctNumbers.size() < n) {
+        setDigit(n);
+        while (correctNumbersHashSet.size() < n) {
             int inputNumber = random.nextInt(9) + 1;
-            if (!correctNumbers.contains(inputNumber)) {
-                correctNumbers.add(inputNumber);
-                System.out.println("add number: " + inputNumber);
-            } else {
-                System.out.println("중복");
+            if (!correctNumbersHashSet.contains(inputNumber)) {
+                correctNumbersHashSet.add(inputNumber);
             }
         }
     }
-    public void setCorrectNumber(){
-        String combineNumber = "";
-        for(Integer i : this.correctNumbers){
-            combineNumber += String.valueOf(i);
+    public void setDigit(int digit) {
+        this.digit = digit;
+    }
+    public int getDigit(){
+        return digit;
+    }
+    public void setCorrectNumberList(){
+        for(Integer i : this.correctNumbersHashSet){
+            correctNumbersList.add(i);
         }
-        this.correctNumber = Integer.valueOf(combineNumber);
+        Collections.shuffle(correctNumbersList);
     }
 
-    public int getCorrectNumber(){
-        System.out.println("정답 Int: " + this.correctNumber);
-        return this.correctNumber;
+    public List<Integer> getCorrectNumbersList(){
+        return this.correctNumbersList;
     }
 
-    public HashSet getCorrectNumbers(){
-        System.out.println("정답 HashSet: "+correctNumbers);
-        return correctNumbers;
+    public int getCorrectNumbersList(int arrayNumber){
+        return this.correctNumbersList.get(arrayNumber);
     }
 
-    public void clearCorrectNumbers(){
-        this.correctNumbers.clear();
+    public HashSet getCorrectNumbersHashSet(){
+        return correctNumbersHashSet;
     }
+
+    public void clearCorrectNumbersHashSet(){
+        this.correctNumbersHashSet.clear();
+    }
+
+
+    public void clearCorrectNumberList(){
+        this.correctNumbersList.clear();
+    }
+
 
 
 
