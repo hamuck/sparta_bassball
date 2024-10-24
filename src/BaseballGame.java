@@ -131,6 +131,7 @@ public class BaseballGame {
                     sc.nextLine();
                     tries++;
                     setInputNumbers(input1);
+                    //입력한 숫자의 자릿수가 맞지않을시
                     if (!checkInputNumber()){
                         System.out.println(digit+" 자릿수의 숫자를 입력해 주세요");
                     }
@@ -141,7 +142,7 @@ public class BaseballGame {
                     mkNumber.clearCorrectNumberList();
                     break;
                 }
-
+                //strike가 자릿수의 숫자와 같을때(정답) 정답문구를 출력하고 break;
                 if (compareNumber() == digit) {
                     System.out.println("정답입니다! : "+mkNumber.getCorrectNumbersList());
                     mkNumber.clearCorrectNumbersHashSet();
