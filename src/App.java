@@ -18,6 +18,9 @@ public class App {
                     System.out.println("현재 자리수 : "+difficulty);
                     difficulty = sc.nextInt();
                     sc.nextLine();
+                    if (difficulty >= 6 || difficulty <= 3){
+                        //커스텀예외처리기능추가하기
+                    }
                     System.out.println(difficulty+"자리수 난이도로 설정되었습니다.");
                 case "1":
                     baseballGame.startGame(difficulty);
