@@ -49,8 +49,12 @@ public class BaseballGame {
 
     //지금까지의 도전횟수를 출력하는 메서드
     public void getCounts(){
-        for (int i = 0; i < this.counts.size(); i++){
-            System.out.println((i+1)+"번째 게임 : 시도 횟수 - "+this.counts.get(i));
+        if(counts.size() > 0){
+            for (int i = 0; i < this.counts.size(); i++){
+                System.out.println((i+1)+"번째 게임 : 시도 횟수 - "+this.counts.get(i));
+            }
+        }else {
+            System.out.println("기록이 존재하지 않습니다.");
         }
     }
 
@@ -90,6 +94,7 @@ public class BaseballGame {
         //입력받은 숫자 리스트 사이즈 만큼 For문 진행
         //리스트가 같은 인덱스, 같은 숫자일시 -> 스트라이크, 숫자가 같진 않으나 해쉬셋에 포함되어있을경우 -> 볼, 나머지 -> 아웃
         for (int i = 0; i < inputNumbersList.size(); i++) {
+
             if (mkNumber.getCorrectNumbersList(i) == getInputNumbersList(i)) {
                 strike++;
 
