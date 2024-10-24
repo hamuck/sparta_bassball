@@ -42,4 +42,4 @@ strike, ball, out 이라는 단서를 통해 추론해 나가는 게임입니다
 ## 구성
  - App.java > 메인
  - BaseballGame.java > 게임을 진행하는 클래스
- - MakeNumber > 게임에 필요한 정답 숫자를 만든는 클래스
+ - MakeNumber > 게임에 필요한 정답 숫자를 만드는 클래스
